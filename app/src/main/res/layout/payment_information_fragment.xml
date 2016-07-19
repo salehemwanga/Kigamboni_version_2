@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:id="@+id/paymentinformation"
+            android:visibility="visible"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="#ffffff">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Maelezo Jinsi ya Kulipia Vifurushi vya Kuvuka Darajani"
+                    android:id="@+id/textView43"
+                    android:textSize="14dp"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Namba ya Kampuni 1234"
+                    android:id="@+id/textView41"
+                    android:textSize="14dp"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:padding="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Jinsi ya kulipia Bonyeza >> "
+                    android:inputType="textMultiLine"
+                    android:textColor="#0dd011"
+                    android:textStyle="bold|italic"
+                    android:padding="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M-Pesa |"
+                    android:id="@+id/m_pesa"
+                    android:textSize="16dp"
+                    android:inputType="textMultiLine"
+                    android:textColor="#0f33e6" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TigoPesa"
+                    android:textSize="16dp"
+                    android:id="@+id/tigoPesa"
+                    android:inputType="textMultiLine"
+                    android:textColor="#0f33e6" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_width="fill_parent"
+                android:id="@+id/m_pesa_layout"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="M-Pesa"
+                    android:id="@+id/textView20"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="1. Bonyeza *150*00# KISHA PIGA"
+                    android:id="@+id/textView22"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="2. Chagua 4 - Lipa kwa M-Pesa"
+                    android:id="@+id/textView23"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Chagua 4 - Weka namba ya Kampuni : 1234"
+                    android:id="@+id/textView24"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="3. Weka namba ya Gari (Plate number )"
+                    android:id="@+id/textView25"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Weka kiasi kutegemea na kifurushi unachotaka kulipia"
+                    android:id="@+id/textView26"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="4. Weka namba ya siri"
+                    android:id="@+id/textView27"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="5. Bonyeza 1 kuthibitisha au 2 Kubatilisha"
+                    android:id="@+id/textView28"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="6. Utapokea ujumbe kuthibisha malipo uliyofanya"
+                    android:id="@+id/textView29"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:id="@+id/tigo_pesa_layout"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Tigo Pesa"
+                    android:id="@+id/textView2"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="1. Bonyeza *150*01# KISHA PIGA"
+                    android:id="@+id/textView32"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="2. Chagua 4 - Lipa kwa Tigo-Pesa"
+                    android:id="@+id/textView33"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="3. Chagua 4 - Weka namba ya Kampuni : 1234"
+                    android:id="@+id/textView34"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="4. Weka namba ya Gari (Plate number )"
+                    android:id="@+id/textView35"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="5. Weka kiasi kutegemea na kifurushi unachotaka kulipia"
+                    android:id="@+id/textView36"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="6. Weka namba ya siri"
+                    android:id="@+id/textView37"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="7. Bonyeza 1 kuthibitisha au 2 Kubatilisha"
+                    android:id="@+id/textView38"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="8. Utapokea ujumbe kuthibisha malipo uliyofanya"
+                    android:id="@+id/textView39"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
