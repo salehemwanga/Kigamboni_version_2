@@ -3,10 +3,210 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Home"
-        android:id="@+id/textView2" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/container">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/top_image"
+                android:background="#ffffff"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:background="@drawable/bridgeimage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:padding="20dp"
+                android:background="#ffffff"
+                android:id="@+id/card">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:id="@+id/imageView2"
+                    android:background="@drawable/card" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Card"
+                    android:textColor="#0a3feb"
+                    android:id="@+id/textView7"
+                    android:padding="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Description about card Renew your Card"
+                    android:id="@+id/textViewCard"
+                    android:padding="2dp" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Manage you Card"
+                    android:textAllCaps="false"
+                    android:background="@drawable/custom_button"
+                    android:id="@+id/button" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:paddingLeft="20dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="10dp"
+                android:paddingRight="20dp"
+                android:layout_height="match_parent"
+                android:id="@+id/news">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="News"
+                    android:textColor="#0a3feb"
+                    android:id="@+id/textView11" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="2dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="See the latest news from Kigamboni Bridge"
+                    android:id="@+id/textView12" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/news1"
+                    android:layout_marginBottom="5dp"
+                    android:background="#f1eeee">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="First News"
+                        android:padding="10dp"
+                        android:id="@+id/textView13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/news2"
+                    android:layout_marginBottom="5dp"
+                    android:background="#f1eeee" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Second News"
+                        android:padding="10dp"
+                        android:id="@+id/textView14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/news3"
+                    android:layout_marginBottom="5dp"
+                    android:background="#f1eeee" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Third News"
+                        android:id="@+id/textView15" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:layout_marginBottom="10dp"
+                android:padding="20dp"
+                android:id="@+id/fare">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Fare"
+                    android:id="@+id/textView16"
+                    android:textColor="#0a3feb" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Find out the cost of journey before you travel"
+                    android:id="@+id/textView17" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:layout_marginBottom="10dp"
+                android:padding="20dp"
+                android:id="@+id/help">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Help and Contacts"
+                    android:id="@+id/helptxt"
+                    android:textColor="#0a3feb" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Our commitment to excellet customer services"
+                    android:id="@+id/helptxt12"
+                    android:textColor="#148df0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="We are committed to providing a high-quality service to everyone we come into contact with and welcom your comments and feedback on our services. \n \n We will liseten to complaints, treat them seriously, resolve them as quicky as possible and learn from them so that we can contiue improving our service. \n \n send us email: kigamboni@gmail.com \n Phone Number: +255 123 456 789"
+                    android:id="@+id/helptxt123" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

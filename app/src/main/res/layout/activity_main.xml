@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#bdbdbd"
+    android:background="#e9e7e7"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -75,7 +75,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="Situation"
                     android:textColor="#000000"
-                    android:id="@+id/homeText"
+                    android:id="@+id/situation"
                     android:layout_gravity="center_horizontal" />
             </LinearLayout>
             <LinearLayout

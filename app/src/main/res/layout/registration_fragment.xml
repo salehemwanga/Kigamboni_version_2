@@ -111,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/edtEmail"
                 android:layout_below="@+id/edtEmail"
+                android:background="@drawable/custom_button"
                 android:layout_marginTop="35dp"
                 android:text="register" />
 

@@ -25,7 +25,7 @@ public class PackagePaymentFragment extends Fragment implements View.OnClickList
 
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         btnInformation = (Button) view.findViewById(R.id.btnInformation);
-        btnInformation.setBackgroundColor(Color.GREEN);
+        btnInformation.setBackgroundColor(Color.parseColor("#64b5f6"));
         btnLogin.setOnClickListener(this);
         btnInformation.setOnClickListener(this);
         FragmentManager fragmentManager =getFragmentManager();
@@ -45,8 +45,8 @@ public class PackagePaymentFragment extends Fragment implements View.OnClickList
                 Registration registration = new Registration();
                 fragmentTransaction.replace(R.id.registration_container, registration);
                 fragmentTransaction.commit();
-                btnLogin.setBackgroundColor(Color.GREEN);
-                btnInformation.setBackgroundColor(Color.GRAY);
+                btnLogin.setBackgroundColor(Color.parseColor("#64b5f6"));
+                btnInformation.setBackgroundColor(Color.parseColor("#dcedc8"));
                 Toast.makeText(getActivity(), "login", Toast.LENGTH_SHORT).show();
                 break;
 
@@ -54,10 +54,10 @@ public class PackagePaymentFragment extends Fragment implements View.OnClickList
                 FragmentManager fragmentManager1 = getFragmentManager();
                 FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
                 PaymentInformation info = new PaymentInformation();
-                fragmentTransaction1.replace(R.id.registration_container,info);
+                fragmentTransaction1.replace(R.id.registration_container, info);
                 fragmentTransaction1.commit();
-                btnInformation.setBackgroundColor(Color.GREEN);
-                btnLogin.setBackgroundColor(Color.GRAY);
+                btnInformation.setBackgroundColor(Color.parseColor("#64b5f6"));
+                btnLogin.setBackgroundColor(Color.parseColor("#dcedc8"));
                 Toast.makeText(getActivity(),"information",Toast.LENGTH_SHORT).show();
                 break;
         }

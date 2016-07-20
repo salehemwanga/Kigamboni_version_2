@@ -1,11 +1,14 @@
 package com.example.salehe.kigamboni;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,14 +37,26 @@ public class TrafficNewsFragment extends Fragment {
     private ListView listView;
     private ImageView image;
 
+    Handler handler = new Handler();
+    Runnable refresh;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.traffic_news_fragment,container,false);
 
+        /*refresh*/
+        refresh = new Runnable() {
+            public void run() {
+                getJSON();
+                handler.postDelayed(refresh, 5000);
+            }
+        };
+        handler.post(refresh);
+        /*end*/
+
         listView = (ListView)view.findViewById(R.id.listViewTraffic123);
-        getJSON();
+       getJSON();
 
         return view;
     }
@@ -110,4 +126,5 @@ public class TrafficNewsFragment extends Fragment {
         GetJSON gj = new GetJSON();
         gj.execute();
     }
+
 }
