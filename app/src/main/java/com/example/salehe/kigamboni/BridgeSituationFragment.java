@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,12 @@ import java.util.HashMap;
  */
 public class BridgeSituationFragment extends Fragment {
 
+    public SwipeRefreshLayout swipeRefreshLayout;
+    HomeFragment homeFragment =  new HomeFragment();
+
     Config conf = new Config();
-    public  String value;
-    public  String value2;
+   /* public  String value;
+    public  String value2;*/
 
     public class Wrapper {
         public String JSON_STRING;
@@ -41,14 +45,30 @@ public class BridgeSituationFragment extends Fragment {
 
     private ListView listView, listView1;
     public TextView name, cost, status;
+    public String situationId;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bridge_situation_fragment,container,false);
+        View view = inflater.inflate(R.layout.bridge_situation_fragment, container, false);
+
+
+        MainActivity mainActivity = (MainActivity) getActivity();
+        situationId  = (String) mainActivity.tvmain.getText();
 
         listView = (ListView) view.findViewById(R.id.listView);
+
         listView1 = (ListView) view.findViewById(R.id.listView1);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getJSON();
+                fetchTimelineAsync(0);
+            }
+        });
+
+
         getJSON();
         return view;
     }
@@ -88,10 +108,8 @@ public class BridgeSituationFragment extends Fragment {
     }
 
 
-
-
     private void showCost(){
-        Toast.makeText(getActivity(), value, Toast.LENGTH_SHORT).show();
+//  Toast.makeText(getActivity(), situationId, Toast.LENGTH_SHORT).show();
         JSONObject jsonObject = null;
         ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
         try {
@@ -120,12 +138,12 @@ public class BridgeSituationFragment extends Fragment {
                 new String[]{Config.TAG_VEHICLE_TYPE,Config.TAG_STATUS_COST,Config.TAG_COST},
                 new int[]{R.id.tvVehicleType,R.id.tvStatusCost, R.id.tvCost});
         listView1.setAdapter(adapter);
+        //Toast.makeText(getActivity(),Config.TAG_STATUS_COST,Toast.LENGTH_SHORT).show();
     }
 
 
     private void getJSON() {
         class GetJSON extends AsyncTask<Void, Void, Wrapper> {
-
             ProgressDialog loading;
 
             @Override
@@ -136,7 +154,6 @@ public class BridgeSituationFragment extends Fragment {
 
             @Override
             protected void onPostExecute(Wrapper s) {
-
                 super.onPostExecute(s);
                 loading.dismiss();
                 w.JSON_STRING = s.JSON_STRING;
@@ -148,11 +165,18 @@ public class BridgeSituationFragment extends Fragment {
             protected Wrapper doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
                 w.JSON_STRING = rh.sendGetRequest(Config.URL_GET_SITUATION);
-                w.JSON_STRING1  = rh.sendGetRequestParam(Config.URL_GET_COST,value);
+                w.JSON_STRING1  = rh.sendGetRequestParam(Config.URL_GET_COST, Integer.parseInt(situationId));
+//                w.JSON_STRING1  = rh.sendGetRequest(Config.URL_GET_COST);
                 return w;
             }
         }
         GetJSON gj = new GetJSON();
         gj.execute();
     }
+
+
+    public void fetchTimelineAsync(int page) {
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
 }

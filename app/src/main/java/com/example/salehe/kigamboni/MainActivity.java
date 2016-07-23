@@ -2,7 +2,9 @@ package com.example.salehe.kigamboni;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,9 +14,27 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    public class Wrapper {
+        public String JSON_STRING;
+    }
+    Wrapper w = new Wrapper();
+    TextView tvmain;
+
     LinearLayout btnhome,btnsituation,btnnews,btnpayment;
     TextView home,payment,situation,newsText;
+
+    /*refresh*/
+    Handler handler = new Handler();
+    Runnable refresh;
+    /**/
 
 
     @Override
@@ -22,14 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-       /* *//*refresh code*//*
-        handler = new Handler();
-
-        handler.postDelayed(m_Runnable, 5000);
-        *//*end refresh code*//*
-*/
-
+        /**/
+        tvmain = (TextView) findViewById(R.id.tvmain);
+        /**/
         home = (TextView) findViewById(R.id.home);
         payment = (TextView) findViewById(R.id.paymentText);
         situation = (TextView) findViewById(R.id.situation);
@@ -46,11 +61,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnnews.setOnClickListener(this);
         btnpayment.setOnClickListener(this);
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        HomeFragment homeFragment = new HomeFragment();
-        fragmentTransaction.add(R.id.main_container,homeFragment);
+        final FragmentManager fragmentManager = getFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        final HomeFragment homeFragment = new HomeFragment();
+        final BridgeSituationFragment bridgeSituation = new BridgeSituationFragment();
+        fragmentTransaction.add(R.id.main_container, homeFragment);
         fragmentTransaction.commit();
+
+
+        /*refresh code*/
+        refresh = new Runnable() {
+            public void run() {
+                getJSON();
+                handler.postDelayed(refresh, 5000);
+            }
+        };
+        handler.post(refresh);
+
+        /*end refresh*/
+
+        getJSON();
     }
 
     @Override
@@ -84,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FragmentManager fragmentManager3 = getFragmentManager();
                 FragmentTransaction fragmentTransaction3 = fragmentManager3.beginTransaction();
                 BridgeSituationFragment bridgeSituation = new BridgeSituationFragment();
+
                 fragmentTransaction3.replace(R.id.main_container,bridgeSituation);
                 home.setTextColor(Color.BLACK);
                 payment.setTextColor(Color.BLACK);
@@ -104,6 +135,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentTransaction4.commit();
                 break;
         }
+    }
+
+    private void showBridgeSituation() {
+
+//        Wrapper w = new Wrapper();
+        JSONObject jsonObject = null;
+        ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+        try {
+            jsonObject = new JSONObject(w.JSON_STRING);
+            JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
+
+            for (int i = 0; i < result.length(); i++) {
+                JSONObject jo = result.getJSONObject(i);
+//                String time = jo.getString(Config.TAG_TIME);
+                String situationid = jo.getString(Config.TAG_STATUS_ID);
+
+                HashMap<String, String> employees = new HashMap<String,String>();
+                employees.put(Config.TAG_STATUS_ID, situationid);
+                employees.put("1",Config.TAG_STATUS_ID);
+                list.add(employees);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        tvmain.setText(list.get(0).get(Config.TAG_STATUS_ID));
+
+    }
+    private void getJSON() {
+        class GetJSON extends AsyncTask<Void, Void, Wrapper> {
+            ProgressDialog loading;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(MainActivity.this, "Fetching Data", "Wait...", false, false);
+            }
+
+            @Override
+            protected void onPostExecute(Wrapper s) {
+
+                super.onPostExecute(s);
+                loading.dismiss();
+                w.JSON_STRING = s.JSON_STRING;
+//               w.JSON_STRING1 = s.JSON_STRING1;
+                showBridgeSituation();
+//                showCost();
+            }
+
+            @Override
+            protected Wrapper doInBackground(Void... params) {
+                RequestHandler rh = new RequestHandler();
+                w.JSON_STRING = rh.sendGetRequest(Config.URL_GET_SITUATION);
+//                w.JSON_STRING1  = rh.sendGetRequestParam(Config.URL_GET_COST, "1");
+                return w;
+            }
+        }
+        GetJSON gj = new GetJSON();
+        gj.execute();
     }
 
 }

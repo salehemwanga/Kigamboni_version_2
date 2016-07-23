@@ -91,7 +91,7 @@ public class RequestHandler {
         return sb.toString();
     }
 
-    public String sendGetRequestParam(String requestURL, String id){
+    public String sendGetRequestParam(String requestURL, int id){
         StringBuilder sb =new StringBuilder();
         try {
             URL url = new URL(requestURL+id);

@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ import java.util.HashMap;
  * Created by Salehe on 7/19/2016.
  */
 public class TrafficNewsFragment extends Fragment {
+    private SwipeRefreshLayout swipeContainer;
 
     public static String[] imageURLs;
     public static Bitmap[] bitmaps;
@@ -45,7 +47,18 @@ public class TrafficNewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.traffic_news_fragment,container,false);
 
-        /*refresh*/
+        swipeContainer  = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getJSON();
+                fetchTimelineAsync(0);
+            }
+        });
+
+
+        getJSON();
+       /* *//*refresh*//*
         refresh = new Runnable() {
             public void run() {
                 getJSON();
@@ -53,7 +66,7 @@ public class TrafficNewsFragment extends Fragment {
             }
         };
         handler.post(refresh);
-        /*end*/
+        *//*end*/
 
         listView = (ListView)view.findViewById(R.id.listViewTraffic123);
        getJSON();
@@ -125,6 +138,13 @@ public class TrafficNewsFragment extends Fragment {
         }
         GetJSON gj = new GetJSON();
         gj.execute();
+    }
+
+
+    public void fetchTimelineAsync(int page) {
+        // Send the network request to fetch the updated data
+        // `client` here is an instance of Android Async HTTP
+        swipeContainer.setRefreshing(false);
     }
 
 }

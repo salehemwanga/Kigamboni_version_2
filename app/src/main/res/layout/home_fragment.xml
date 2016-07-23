@@ -112,7 +112,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="First News"
                         android:padding="10dp"
-                        android:id="@+id/textView13" />
+                        android:id="@+id/news1txt" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -129,14 +129,14 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Second News"
                         android:padding="10dp"
-                        android:id="@+id/textView14" />
+                        android:id="@+id/new2txt" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/news3"
+                    android:id="@+id/new3"
                     android:layout_marginBottom="5dp"
                     android:background="#f1eeee" >
 
@@ -146,7 +146,7 @@
                         android:padding="10dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Third News"
-                        android:id="@+id/textView15" />
+                        android:id="@+id/news3txt" />
                 </LinearLayout>
 
             </LinearLayout>
