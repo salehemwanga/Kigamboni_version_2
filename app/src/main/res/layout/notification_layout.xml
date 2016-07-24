@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/radioNotify">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Notification"
+                android:id="@+id/textView"
+                android:gravity="center"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Select time to receive notification about bridge situation"
+                android:id="@+id/textView13" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 Seconds"
+                android:id="@+id/rd1"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:checked="true"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 Minutes"
+                android:id="@+id/rd2"
+                android:layout_below="@+id/rd1"
+                android:layout_centerHorizontal="true"
+                android:checked="false"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30 Minutes"
+                android:id="@+id/rd3"
+                android:layout_below="@+id/rd1"
+                android:layout_centerHorizontal="true"
+                android:checked="false"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Hour"
+                android:id="@+id/rd4"
+                android:layout_below="@+id/rd1"
+                android:layout_centerHorizontal="true"
+                android:checked="false"
+                android:textStyle="italic" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+</LinearLayout>

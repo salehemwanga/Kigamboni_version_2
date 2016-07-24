@@ -1,6 +1,8 @@
 package com.example.salehe.kigamboni;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -15,6 +18,7 @@ import android.widget.Toast;
  */
 public class Registration extends Fragment implements View.OnClickListener{
     Button btnReg;
+    TextView logiLink;
     EditText edtFirst,edtLast, edtUser, edtPass, edtConfPass, edtEmail;
 
     @Nullable
@@ -29,7 +33,10 @@ public class Registration extends Fragment implements View.OnClickListener{
         edtConfPass=(EditText)view.findViewById(R.id.edtConfirmPass);
         edtEmail=(EditText)view.findViewById(R.id.edtEmail);
         //Initialization of Register Button
-        btnReg=(Button)view.findViewById(R.id.button1);
+        btnReg=(Button)view.findViewById(R.id.btnRegister);
+        logiLink = (TextView)view.findViewById(R.id.loginLink);
+
+        logiLink.setOnClickListener(this);
         btnReg.setOnClickListener(this);
         return view;
     }
@@ -37,7 +44,7 @@ public class Registration extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button1:
+            case R.id.btnRegister:
                 // TODO Auto-generated method stub
                 if(edtFirst.getText().toString().length()==0){
                     edtFirst.setError("First name not entered");
@@ -72,6 +79,15 @@ public class Registration extends Fragment implements View.OnClickListener{
                     Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
                 }
 
+                break;
+
+            case R.id.loginLink:
+                FragmentManager fragmentManager1 = getFragmentManager();
+                FragmentTransaction fragmentTransaction1 = fragmentManager1.beginTransaction();
+                Login login = new Login();
+                fragmentTransaction1.replace(R.id.registration_container, login);
+                fragmentTransaction1.commit();
+                Toast.makeText(getActivity(),"login",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -1,14 +1,24 @@
 package com.example.salehe.kigamboni;
 
+import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -30,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     LinearLayout btnhome,btnsituation,btnnews,btnpayment;
     TextView home,payment,situation,newsText;
+    ImageView imageView;
 
     /*refresh*/
     Handler handler = new Handler();
@@ -41,6 +53,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*custom action bar*/
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setCustomView(R.layout.custom_action_bar);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowCustomEnabled(true);
+
+        imageView = (ImageView) findViewById(R.id.btnSetting);
+        imageView.setOnClickListener(this);
+        /*end*/
 
         /**/
         tvmain = (TextView) findViewById(R.id.tvmain);
@@ -134,6 +156,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 situation.setTextColor(Color.BLACK);
                 fragmentTransaction4.commit();
                 break;
+
+            case R.id.btnSetting:
+                LayoutInflater layout =LayoutInflater.from(this);
+                View promptView = layout.inflate(R.layout.notification_layout,null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setView(promptView);
+                alertDialogBuilder.setCancelable(false)
+                        .setPositiveButton("save", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Long alertTime = new GregorianCalendar().getTimeInMillis()+10000;
+                                Intent alertIntent =  new Intent(MainActivity.this,AlertReceiver.class);
+
+                                AlarmManager alarmNanager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                alarmNanager.set(AlarmManager.RTC_WAKEUP,alertTime, PendingIntent.getBroadcast(MainActivity.this, 1, alertIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+                                Toast.makeText(MainActivity.this, "Notification set", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(),"canceled", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                alertDialogBuilder.create().show();
+
+                break;
         }
     }
 
@@ -196,4 +247,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gj.execute();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Closing Appliation")
+                .setMessage("Are you sure you want to close this Application?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }

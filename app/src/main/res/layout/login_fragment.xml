@@ -57,24 +57,30 @@
 
             </EditText>
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/edtEmail"
                 android:layout_below="@+id/edtPass"
+                android:background="@drawable/custom_button"
                 android:layout_marginTop="35dp"
                 android:text="Login" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/button1"
-                android:layout_below="@+id/button1"
+                android:layout_alignLeft="@+id/btnLogin"
+                android:layout_below="@+id/btnLogin"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Register"
                 android:layout_alignParentRight="true"
-                android:id="@+id/textView4" />
+                android:id="@+id/registerLink"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="#172bdb"
+                android:textSize="16dp" />
 
         </RelativeLayout>
     </ScrollView>

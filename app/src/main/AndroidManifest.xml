@@ -3,6 +3,7 @@
     package="com.example.salehe.kigamboni" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.alarm.permission.SET_AlARM" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name="com.example.salehe.kigamboni.AlertReceiver" android:enabled="true"></receiver>
     </application>
 
 </manifest>

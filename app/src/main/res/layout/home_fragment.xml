@@ -203,6 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:textStyle="italic"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="We are committed to providing a high-quality service to everyone we come into contact with and welcom your comments and feedback on our services. \n \n We will liseten to complaints, treat them seriously, resolve them as quicky as possible and learn from them so that we can contiue improving our service. \n \n send us email: kigamboni@gmail.com \n Phone Number: +255 123 456 789"
                     android:id="@+id/helptxt123" />
