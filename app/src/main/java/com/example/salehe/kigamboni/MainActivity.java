@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*custom action bar*/
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setCustomView(R.layout.custom_action_bar);
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayShowCustomEnabled(true);
+//        custom action bar
+                    final ActionBar actionBar = getSupportActionBar();
+                    actionBar.setCustomView(R.layout.custom_action_bar);
+                    actionBar.setDisplayShowTitleEnabled(false);
+                    actionBar.setDisplayShowCustomEnabled(true);
 
         imageView = (ImageView) findViewById(R.id.btnSetting);
         imageView.setOnClickListener(this);
