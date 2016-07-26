@@ -116,10 +116,10 @@
                 android:text="register" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/btnLogin"
-                android:layout_below="@+id/btnLogin"
+                android:layout_below="@+id/btnRegister"
                 android:layout_marginLeft="5dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Login"

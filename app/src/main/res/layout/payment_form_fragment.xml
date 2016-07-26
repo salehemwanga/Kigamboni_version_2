@@ -48,18 +48,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner" />
 
-            <EditText
-                android:id="@+id/edtUsername"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/edtlastname"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                android:ems="10"
-                android:hint="Card Number"
-                android:inputType="text"
-                android:singleLine="true" />
-
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -82,6 +70,18 @@
                     android:checked="false"
                     android:layout_marginLeft="10dp" />
             </RadioGroup>
+
+            <EditText
+                android:id="@+id/edtUsername"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtlastname"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Card Number"
+                android:inputType="text"
+                android:singleLine="true" />
 
             <EditText
                 android:id="@+id/edtlastname"

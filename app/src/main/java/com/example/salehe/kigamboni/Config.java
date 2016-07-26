@@ -7,6 +7,7 @@ public class Config {
     public static final String URL_GET_SITUATION = "http://192.168.43.20/android/bridge_situation.php";
     public static final String URL_GET_NEWS = "http://192.168.43.20/android/get_news.php";
     public static final String URL_GET_COST = "http://192.168.43.20/android/get_cost.php?id=";
+    public static final String URL_LOGIN = "http://192.168.43.20/android/login.php?username=&password=";
 
 
     //JSON Tags
