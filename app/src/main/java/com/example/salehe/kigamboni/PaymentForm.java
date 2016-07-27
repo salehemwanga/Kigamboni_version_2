@@ -134,9 +134,7 @@ public class PaymentForm extends Fragment implements View.OnClickListener{
                     HttpResponse response = httpClient.execute(httpPost);
 
                     HttpEntity entity = response.getEntity();
-
                     is = entity.getContent();
-
                     BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"), 8);
                     StringBuilder sb = new StringBuilder();
 

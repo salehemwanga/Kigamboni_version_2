@@ -84,6 +84,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="*150*00#"
+                    android:id="@+id/mpesaNo"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="1. Bonyeza *150*00# KISHA PIGA"
                     android:id="@+id/textView22"
@@ -137,6 +146,13 @@
                     android:text="6. Utapokea ujumbe kuthibisha malipo uliyofanya"
                     android:id="@+id/textView29"
                     android:textColor="#000" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bonyeza hapa kulipia"
+                    android:id="@+id/btnMpesa"
+                    android:foreground="#0fffffff" />
             </LinearLayout>
 
             <LinearLayout
@@ -212,6 +228,12 @@
                     android:text="8. Utapokea ujumbe kuthibisha malipo uliyofanya"
                     android:id="@+id/textView39"
                     android:textColor="#000" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bonyeza hapa kulipia"
+                    android:id="@+id/btnTigo" />
             </LinearLayout>
 
         </LinearLayout>
