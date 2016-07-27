@@ -31,7 +31,7 @@
             tools:context=".MainActivity" >
 
             <EditText
-                android:id="@+id/edtfirstname"
+                android:id="@+id/edtPlatenumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/edtlastname"
@@ -72,10 +72,10 @@
             </RadioGroup>
 
             <EditText
-                android:id="@+id/edtUsername"
+                android:id="@+id/edtCardnumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/edtlastname"
+                android:layout_below="@+id/edtCardnumber"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:ems="10"
@@ -84,7 +84,7 @@
                 android:singleLine="true" />
 
             <EditText
-                android:id="@+id/edtlastname"
+                android:id="@+id/edtAccountnumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/edtUsername"

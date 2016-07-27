@@ -82,7 +82,7 @@
                 android:singleLine="true" />
 
             <EditText
-                android:id="@+id/edtEmail"
+                android:id="@+id/edtPhonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/edtConfirmPass"
@@ -109,8 +109,8 @@
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/edtEmail"
-                android:layout_below="@+id/edtEmail"
+                android:layout_alignLeft="@+id/edtPhonenumber"
+                android:layout_below="@+id/edtPhonenumber"
                 android:background="@drawable/custom_button"
                 android:layout_marginTop="35dp"
                 android:text="register" />

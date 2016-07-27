@@ -54,27 +54,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
-                    android:text="Jinsi ya kulipia Bonyeza >> "
+                    android:text="Jinsi ya kulipia"
                     android:inputType="textMultiLine"
                     android:textColor="#0dd011"
                     android:textStyle="bold|italic"
                     android:padding="5dp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="M-Pesa |"
-                    android:id="@+id/m_pesa"
-                    android:textSize="16dp"
-                    android:inputType="textMultiLine"
-                    android:textColor="#0f33e6" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TigoPesa"
-                    android:textSize="16dp"
-                    android:id="@+id/tigoPesa"
-                    android:inputType="textMultiLine"
-                    android:textColor="#0f33e6" />
 
             </LinearLayout>
 

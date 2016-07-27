@@ -1,8 +1,11 @@
 package com.example.salehe.kigamboni;
 
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,13 +16,43 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Salehe on 7/19/2016.
  */
 public class Registration extends Fragment implements View.OnClickListener{
+    /*rgistration*/
+    String username,password,phoneNumber,firstName,lastName;
+
+    // Progress Dialog
+    private ProgressDialog pDialog;
+    // JSON parser class
+    JSONParser jsonParser = new JSONParser();
+   /* private static final String LOGIN_URL ="http://192.168.43.20/android/login.php";
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";*/
+
+    /*end...*/
     Button btnReg;
     TextView logiLink;
-    EditText edtFirst,edtLast, edtUser, edtPass, edtConfPass, edtEmail;
+    EditText edtFirst,edtLast, edtUser, edtPass, edtConfPass, edtPhone;
 
     @Nullable
     @Override
@@ -31,7 +64,7 @@ public class Registration extends Fragment implements View.OnClickListener{
         edtUser=(EditText)view.findViewById(R.id.edtUsername);
         edtPass=(EditText)view.findViewById(R.id.edtPass);
         edtConfPass=(EditText)view.findViewById(R.id.edtConfirmPass);
-        edtEmail=(EditText)view.findViewById(R.id.edtEmail);
+        edtPhone=(EditText)view.findViewById(R.id.edtPhonenumber);
         //Initialization of Register Button
         btnReg=(Button)view.findViewById(R.id.btnRegister);
         logiLink = (TextView)view.findViewById(R.id.loginLink);
@@ -71,12 +104,13 @@ public class Registration extends Fragment implements View.OnClickListener{
                     edtConfPass.setError("Password Not matched");
                     edtConfPass.requestFocus();
                 }
-                if(edtPass.getText().toString().length()<8){
+                if(edtPass.getText().toString().length()<3){
                     edtPass.setError("Password should be atleast of 8 charactors");
                 edtPass.requestFocus();
                 }
                 else {
-                    Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                    invokeRegistration();
+//                    Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
                 }
 
                 break;
@@ -87,8 +121,97 @@ public class Registration extends Fragment implements View.OnClickListener{
                 Login login = new Login();
                 fragmentTransaction1.replace(R.id.registration_container, login);
                 fragmentTransaction1.commit();
-                Toast.makeText(getActivity(),"login",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(),"login",Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    public void invokeRegistration(){
+        username = edtUser.getText().toString();
+        password = edtPass.getText().toString();
+        firstName = edtFirst.getText().toString();
+        lastName = edtLast.getText().toString();
+        phoneNumber = edtPhone.getText().toString();
+        registration(firstName, lastName, username, password, phoneNumber);
+    }
+
+    private void registration(final String username, String password, String firstName, String lastName, String phoneNumber) {
+
+        class LoginAsync extends AsyncTask<String, Void, String> {
+
+            private Dialog loadingDialog;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loadingDialog = ProgressDialog.show(getActivity(), "Please wait", "Loading...");
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                String uname = params[0];
+                String pass = params[1];
+                String fname = params[2];
+                String lname = params[3];
+                String pnumber = params[4];
+
+                InputStream is = null;
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("username", uname));
+                nameValuePairs.add(new BasicNameValuePair("password", pass));
+                nameValuePairs.add(new BasicNameValuePair("first_name", fname));
+                nameValuePairs.add(new BasicNameValuePair("last_name", lname));
+                nameValuePairs.add(new BasicNameValuePair("phone_number", pnumber));
+                String result = null;
+
+                try{
+                    HttpClient httpClient = new DefaultHttpClient();
+                    HttpPost httpPost = new HttpPost("http://192.168.43.20/android/registration.php");
+                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                    HttpResponse response = httpClient.execute(httpPost);
+
+                    HttpEntity entity = response.getEntity();
+
+                    is = entity.getContent();
+
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"), 8);
+                    StringBuilder sb = new StringBuilder();
+
+                    String line = null;
+                    while ((line = reader.readLine()) != null)
+                    {
+                        sb.append(line + "\n");
+                    }
+                    result = sb.toString();
+                } catch (ClientProtocolException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return result;
+            }
+
+            @Override
+            protected void onPostExecute(String result){
+                String s = result.trim();
+                loadingDialog.dismiss();
+                if(s.equalsIgnoreCase("success")){
+                    FragmentManager abc = getFragmentManager();
+                    FragmentTransaction abcTrans = abc.beginTransaction();
+                    Login login = new Login();
+                    abcTrans.replace(R.id.registration_container, login);
+                    abcTrans.commit();
+                }else {
+                    Toast.makeText(getActivity(), "Invalid User Name or Password", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+
+        LoginAsync la = new LoginAsync();
+        la.execute(username, password,firstName,lastName,phoneNumber);
+
     }
 }
